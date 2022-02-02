@@ -1,0 +1,229 @@
+<!--
+<template>
+
+   
+    <div class="spinner">
+           <template if:true={isLoading}>
+               <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+               </lightning-spinner>
+           </template>
+       </div>
+
+   <lightning-card class="" title="Custom Contact List View">
+
+         
+           <lightning-button-icon icon-name="utility:add" slot="actions" onclick={add}></lightning-button-icon>
+           <lightning-button 
+               label={toggleSaveLabel} 
+               icon-name="utility:save" 
+               slot="actions"
+               onclick={handleSave}>
+           </lightning-button>
+           <lightning-button 
+               label="Cancel" 
+               icon-name="utility:cancel" 
+               slot="actions"
+               onclick={handleCancel}>
+           </lightning-button>
+        <template if:true={renderTable}>
+            <div class="tableDiv">
+                <div class={tableStyle}>
+                    <table aria-describedby="conatact-list" class="slds-table  slds-table_bordered ">
+
+                       <thead>
+                            <tr class="slds-line-height_reset">
+                                <th class="slds-size_1-of-6 " scope="col">
+                                    <div class="slds-truncate " title="First Name">First Name</div>
+                                </th>
+                                <th class="slds-size_1-of-6 " scope="col">
+                                    <div class="slds-truncate " title="Last Name">Last Name</div>
+                                </th>
+                                <th class="slds-size_1-of-6 " scope="col">
+                                    <div class="slds-truncate " title="Email">Email</div>
+                                </th>
+                                <th class="slds-size_1-of-6" scope="col">
+                                    <div class="slds-truncate " title="Phone">Principle
+                                    </div>
+                                </th>
+                                <th class="slds-size_1-of-6" scope="col">
+                                    <div class="slds-truncate " title="Mobile">Rate
+                                    </div>
+                                </th>
+                                <th class="slds-size_1-of-6" scope="col">
+                                    <div class="slds-truncate " title="Mobile">Time
+                                    </div>
+                                </th>
+                                <th class="slds-size_1-of-6" scope="col">
+                                    <div class="slds-truncate " title="Mobile">SI
+                                    </div>
+                                </th>
+
+                                <th class="slds-size_1-of-6" scope="col">
+                                    <div class="slds-truncate " title="">Delete</div>
+                                </th>
+                            </tr>
+                        </thead>
+
+                      
+                        <tbody>
+                            <template for:each={contactList} for:item="item" for:index="indexVar">
+                                <tr key={item.Id} class="slds-hint-parent">
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.FirstName}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.LastName}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.Email}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.Principle__c}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.Rate__c}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.Time__c}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div>
+                                            {item.SI__c}
+                                        </div>
+                                    </td>
+                                    <td class="slds-size_1-of-10" data-label="Prospecting">
+                                        <a name={indexVar} data-id={item.Id} onclick={remove}>
+                                                <lightning-icon icon-name="utility:delete" alternative-text="delete"  size="small"></lightning-icon>
+                                        </a>
+                                    </td>
+                                    <td class="slds-size_1-of-6">
+                                        <div class="buttonMenu">
+                                            <lightning-button-menu alternative-text="Toggle menu">
+                                                <P onclick={navigateToRecordEditPage} data-recid={item.Id}>
+                                                    <lightning-menu-item label="Edit">
+                                                    </lightning-menu-item>
+                                                </P>
+                                                <p onclick={deleteContact} data-recid={item.Id}>
+                                                    <lightning-menu-item label="Delete">
+                                                    </lightning-menu-item>
+                                                </p>
+                                            </lightning-button-menu>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </template>
+    </lightning-card>
+</template>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template>
+  
+   <lightning-card title="Contact List">
+
+    <lightning-button-icon icon-name="utility:add" slot="actions" onclick={add}></lightning-button-icon>
+            <lightning-button 
+                label={toggleSaveLabel} 
+                icon-name="utility:save" 
+                slot="actions"
+                onclick={handleSave}>
+            </lightning-button>
+            <lightning-button 
+                label="Cancel" 
+                icon-name="utility:cancel" 
+                slot="actions"
+                onclick={handleCancel}>
+            </lightning-button>
+    
+    <!--<div class="slds-float_right slds-p-bottom_small">
+        <h1 class="slds-page-header__title">Add Row
+            <lightning-button-icon icon-name="utility:add"  size="large" variant="bare" alternative-text="Add" onclick={addRow}> </lightning-button-icon>
+        </h1>
+    </div>
+    -->
+
+
+       <lightning-datatable
+       data={conObj} 
+       columns={columns}
+       key-field="ID"
+       hide-checkbox-column="true"
+       onsave={handleSave}
+       draft-values={draftValues}
+       onrowselection={getSelectedName}
+       onrowaction={handleRowAction}>
+       </lightning-datatable>
+   </lightning-card>
+
+
+
+
+  
+</template>

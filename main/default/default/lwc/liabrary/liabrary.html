@@ -1,0 +1,128 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+    <lightning-card class="slds-var-p-around_medium" title=" New Book Entry " >
+ 
+
+        
+       <div>
+        <p class="slds-var-p-horizontal_small">
+            <lightning-input type="text" value={getBookRecord.Name} label="Book Name" onchange={handlechange} name="bookName"></lightning-input>
+            
+            </p>
+            <p class="slds-var-p-horizontal_small">
+            <lightning-input type="text" value={getBookRecord.ISBN_Number__c} label="ISBN Number" onchange={handlechange} name="isbn"></lightning-input>
+            </p>
+            <p class="slds-var-p-horizontal_small">
+            <lightning-input type="text" value={getBookRecord.Price__c} label="Price" onchange={handlechange} name="price"></lightning-input>
+            </p>
+            <p class="slds-var-p-horizontal_small">
+            <lightning-input type="text" value={getBookRecord.Author__c} label="Author" onchange={handlechange} name="author"></lightning-input>
+            </p>
+            <p class="slds-var-p-horizontal_small">
+            <lightning-input type="text" value={numberofbooks} label="Number of Books" onchange={handlechange} name="numberofbooks"></lightning-input>
+            </p>
+
+        </div>
+        <br/>
+    <div slot="footer">
+        <lightning-button variant="brand" label="Submit" title="Primary action" onclick={handleClick} ></lightning-button>
+    </div>
+    </lightning-card>
+    </div>
+
+    
+        <div class="slds-col slds-size_2-of-3">
+
+
+
+
+
+
+
+
+
+
+
+   
+
+    
+        <lightning-card class="slds-var-p-around_medium" title="Book Table">
+      
+             <template if:true={renderTable}>
+                 <div class="tableDiv">
+                     <div class={tableStyle}>
+                         <table aria-describedby="conatact-list"  class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols">
+     
+                             <!--Header of the table-->
+                             <thead>
+                                 <tr class="slds-line-height_reset">
+                                     <th class="slds-size_1-of-6" scope="col">
+                                         <div class="slds-truncate " title="First Name">Book Name</div>
+                                     </th>
+                                     <th class="slds-size_1-of-6" scope="col">
+                                         <div class="slds-truncate " title="First Name">ISBN Number</div>
+                                     </th>
+                                     <th class="slds-size_1-of-6" scope="col">
+                                         <div class="slds-truncate " title="Last Name">Author</div>
+                                     </th>
+                                     
+                                     <th class="slds-size_1-of-6" scope="col">
+                                         <div class="slds-truncate " title=""></div>
+                                     </th>
+                                 </tr>
+                             </thead>
+     
+                             <!--Body of the table-->
+                             <tbody>
+                                 <template for:each={BookList} for:item="item" for:index="index">
+     
+                                     <tr key={item.Id} class="slds-hint-parent">
+                                         <td class="slds-size_1-of-6">
+                                             <div>
+                                                 <template if:false={editrow}>
+                                                     {item.Name}
+                                                 </template>
+                                                 
+                                             </div>
+                                         </td>
+                                         <td class="slds-size_1-of-6">
+                                             <div>
+     
+                                                 <template if:false={editrow}>
+                                                     {item.ISBN_Number__c}
+                                                 </template>
+                                             </div>
+                                         </td>
+                                         <td class="slds-size_1-of-6">
+                                             <div>
+     
+                                                 <template if:false={editrow}>
+                                                     {item.Author__c}
+                                                 </template>
+                                                 
+                                             </div>
+                                         </td>
+                                        
+                                         <td class="slds-size_1-of-6">
+                                             <div>
+                                                 <template if:false={editrow}>
+                                                    
+                                                   <lightning-button slot="actions" onclick={selecthandel} access-key={index}  data-recid={item.Id} label="Select"></lightning-button>
+                                                 </template>
+                                                </div>
+                                         </td>
+                                     </tr>
+                                 </template>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+     
+             </template>
+         </lightning-card>
+         </div>
+         </div>
+    
+    
+</template>
